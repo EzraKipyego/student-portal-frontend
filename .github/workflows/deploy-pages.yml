@@ -36,7 +36,6 @@ jobs:
         env:
           # Set this repository secret to your Render backend URL, without a trailing slash.
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
 
       - name: Preserve client-side routes on GitHub Pages
