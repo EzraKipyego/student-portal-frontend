@@ -3,16 +3,27 @@ import ResourceManager from '../components/ResourceManager'
 
 const fields = [
   { name: 'course', label: 'Course', type: 'select', required: true, optionsSource: '/api/courses/', optionValueKey: 'id', optionLabelKey: 'title' },
-  { name: 'day_of_week', label: 'Day', type: 'select', required: true, options: [
-    { id: 'mon', label: 'Monday' },
-    { id: 'tue', label: 'Tuesday' },
-    { id: 'wed', label: 'Wednesday' },
-    { id: 'thu', label: 'Thursday' },
-    { id: 'fri', label: 'Friday' },
-    { id: 'sat', label: 'Saturday' },
-  ], optionValueKey: 'id', optionLabelKey: 'label' },
-  { name: 'start_time', label: 'Start Time', type: 'text', required: true },
-  { name: 'end_time', label: 'End Time', type: 'text', required: true },
+
+  { 
+    name: 'day_of_week', 
+    label: 'Day', 
+    type: 'select', 
+    required: true, 
+    options: [
+      { id: 'mon', label: 'Monday' },
+      { id: 'tue', label: 'Tuesday' },
+      { id: 'wed', label: 'Wednesday' },
+      { id: 'thu', label: 'Thursday' },
+      { id: 'fri', label: 'Friday' },
+      { id: 'sat', label: 'Saturday' },
+    ], 
+    optionValueKey: 'id', 
+    optionLabelKey: 'label' 
+  },
+
+  { name: 'start_time', label: 'Start Time', type: 'time', required: true },
+  { name: 'end_time', label: 'End Time', type: 'time', required: true },
+
   { name: 'venue', label: 'Venue', type: 'text' },
 ]
 
