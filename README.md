@@ -1,58 +1,147 @@
-# Student Management Portal — Frontend
+# Student Portal
 
-React + Tailwind CSS frontend for the Student Management Portal, styled to
-match the reference student portal screenshot (dark navy sidebar, coral
-accent, welcome banner, quick actions, calendar + news panel).
+A web-based student management system built with React and Django REST Framework. The application provides a centralized platform for managing students, courses, announcements, attendance, and payments through a simple and responsive interface.
 
-## Run it locally
+## Features
+
+### Students
+
+* Secure user authentication
+* View enrolled courses
+* View grades
+* View announcements
+* Track attendance
+* View timetable
+* Pay school fees via M-Pesa (Safaricom Daraja STK Push)
+
+### Administrators
+
+* Manage students
+* Manage courses
+* Enroll students in courses
+* Update student grades
+* Create and manage announcements
+* Manage attendance records
+* Manage timetables
+* Monitor M-Pesa payment transactions
+
+## Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* React Router
+* Tailwind CSS v4
+
+### Backend
+
+* Django
+* Django REST Framework
+* JWT Authentication
+* SQLite3
+* M-Pesa Daraja API
+
+### Deployment
+
+* Frontend: GitHub Pages
+* Backend: Render
+
+## Project Structure
+
+```text
+Student-Portal/
+├── Student-Portal-Frontend/
+├── Student-Portal-Backend/
+└── docker-compose.yml
+```
+
+## Running the Project Locally
+
+### Clone the repository
 
 ```bash
+git clone <repository-url>
+cd Student-Portal
+```
+
+### Backend
+
+```bash
+cd Student-Portal-Backend
+
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+
+python3 manage.py migrate
+python3 manage.py createsuperuser
+python3 manage.py runserver
+```
+
+### Frontend
+
+```bash
+cd Student-Portal-Frontend
+
+cp .env 
+
 npm install
 npm run dev
 ```
 
-Then open http://localhost:5173. Log in with any email/password — auth is
-currently mocked in `src/context/AuthContext.jsx` so the UI can be built and
-demoed before the Django REST backend is live.
+## Running with Docker
 
-## What's here
+```bash
+docker -compose up --build
+```
 
-- `src/pages/Login.jsx` — sign-in screen
-- `src/pages/Dashboard.jsx` — welcome banner, quick actions, courses list,
-  mini calendar, news & updates (mirrors the reference screenshot)
-- `src/pages/Courses.jsx`, `Grades.jsx`, `Attendance.jsx`, `Timetable.jsx`,
-  `Announcements.jsx`, `Payments.jsx`, `Profile.jsx` — stub pages wired into
-  routing, ready to be filled in
-- `src/components/Sidebar.jsx`, `Topbar.jsx`, `AppLayout.jsx` — shared shell
-- `src/context/AuthContext.jsx` — JWT token storage + login/logout, currently
-  mocked
-- `src/data/mockData.js` — placeholder data standing in for the API
+This starts the frontend, backend, and database together.
 
-## Next steps (matches the mentor's whiteboard requirements)
+## Environment Variables
 
-1. **Authentication/Authorization** — swap the mocked `login()` call for
-   `POST /api/auth/login/` (JWT) against the Django REST API; store the
-   access/refresh tokens and add an axios/fetch wrapper that attaches the
-   `Authorization: Bearer <token>` header and refreshes on expiry.
-2. **Django REST API** — build the endpoints for students, courses,
-   enrollments, grades, attendance, timetable, announcements, and payments
-   (at least 5 schemas, per the requirement).
-3. **Dockerize** — separate Dockerfiles for frontend, backend, and database,
-   tied together with docker-compose.
-4. **GitHub Actions** — CI to lint/test on push, CD to deploy frontend
-   (Vercel) and backend (Render).
-5. **Kanban board** — track these tasks (e.g. GitHub Projects/Trello).
-6. **ER diagram** — model the schemas above before/while building the API.
+### Frontend
 
-## Tech stack
+```env
+VITE_API_URL=http://localhost:8000
+```
 
-- React 18 + React Router
-- Tailwind CSS v4 (via the `@tailwindcss/vite` plugin) using **only default
-  utilities** — `src/index.css` is just `@import "tailwindcss";`, no custom
-  theme. The sidebar/dark accents use built-in `slate` shades and the coral
-  accent uses built-in `orange` shades (closest defaults to the original
-  custom `navy`/`brand` palette). Cards use the default `shadow` and
-  `rounded-2xl` utilities in place of the old custom `shadow-card` /
-  `rounded-xl2`.
-- lucide-react icons
-- Vite
+### Backend
+
+```env
+DJANGO_SECRET_KEY=your_secret_key
+DJANGO_DEBUG=True
+DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:5173
+
+MPESA_ENV=sandbox
+MPESA_CONSUMER_KEY=your_consumer_key
+MPESA_CONSUMER_SECRET=your_consumer_secret
+MPESA_SHORTCODE=174379
+MPESA_PASSKEY=your_passkey
+MPESA_CALLBACK_URL=https://your-callback-url/api/payments/mpesa/callback/
+```
+
+## Deployment
+
+The application is configured for deployment with:
+
+* GitHub Pages (Frontend)
+* Render (Backend)
+
+## Future Improvements
+
+* Email notifications
+* Student performance analytics
+* File uploads
+* Improved reporting
+
+## License
+
+This project is available for learning and portfolio purposes.
+
+## Author
+
+Ezra Kipyego
