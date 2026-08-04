@@ -34,7 +34,6 @@ jobs:
 
       - name: Build frontend
         env:
-          # Set this repository secret to your Render backend URL, without a trailing slash.
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: npm run build
 
