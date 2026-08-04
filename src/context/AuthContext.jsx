@@ -28,7 +28,6 @@ export function AuthProvider({ children }) {
         persistUser(user)
       })
       .catch(() => {
-        // stored token is invalid/expired past refresh — force a clean login
         clearTokens()
         setUser(null)
       })

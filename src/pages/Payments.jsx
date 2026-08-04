@@ -81,11 +81,9 @@ export default function Payments() {
   return (
     <AppLayout title="Financial Statements">
       <div className="space-y-6">
-        {/* Pay form */}
         <div className="bg-white rounded-2xl shadow-md p-6 max-w-md">
           <p className="text-sm font-semibold text-slate-800 mb-1">Pay School Fees</p>
-          <p className="text-xs text-slate-500 mb-4">
-          </p>
+          <p className="text-xs text-slate-500 mb-4">Use your Daraja sandbox test phone number.</p>
           <form onSubmit={handlePay} className="space-y-3">
             <div>
               <label className="block text-xs font-medium text-slate-600 mb-1">Amount (KES)</label>
@@ -124,7 +122,6 @@ export default function Payments() {
           </form>
         </div>
 
-        {/* Payment history */}
         <div className="bg-white rounded-2xl shadow-md divide-y divide-slate-100">
           {loading && <p className="px-6 py-8 text-sm text-slate-400">Loading payments…</p>}
           {!loading && error && (

@@ -53,7 +53,6 @@ export default function Dashboard() {
     <AppLayout title="Dashboard">
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         <div className="xl:col-span-2 space-y-6">
-          {/* Quick actions */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {quickActions.map(({ id, label, to, icon: Icon }) => (
               <Link
@@ -70,7 +69,6 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Courses */}
           <div>
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-slate-800">Courses</p>
@@ -110,7 +108,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-                      {/* announcements right column */}
         <div className="space-y-6">
           <div className="bg-white rounded-2xl shadow-md p-5">
             <p className="text-sm font-semibold text-slate-800 mb-4">Announcements</p>
